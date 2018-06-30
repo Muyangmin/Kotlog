@@ -1,0 +1,25 @@
+def isAndroidModule() {
+    return project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.library")
+}
+
+if (isAndroidModule()) {
+    apply plugin: "kotlin-android"
+    apply plugin: "kotlin-android-extensions"
+    apply plugin: 'kotlin-kapt'
+
+    android {
+        lintOptions {
+            abortOnError false
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+
+    dependencies {
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_VERSION}"
+        implementation "org.jetbrains.kotlin:kotlin-reflect:${KOTLIN_VERSION}"
+    }
+}
