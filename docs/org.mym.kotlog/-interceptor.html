@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Interceptor - </title>
+<link rel="stylesheet" href="..\style.css">
+</HEAD>
+<BODY>
+<a href="index.html">org.mym.kotlog</a>&nbsp;/&nbsp;<a href=".">Interceptor</a><br/>
+<br/>
+<h1>Interceptor</h1>
+<code><span class="keyword">typealias </span><span class="identifier">Interceptor</span>&nbsp;<span class="symbol">=</span>&nbsp;<span class="symbol">(</span><a href="-log-request/index.html"><span class="identifier">LogRequest</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<span class="identifier">Boolean</span></code>
+<p>An Interceptor can decide whether this log can be printed.</p>
+<p>Multi interceptors are allowed. For each log request, if previous interceptor has intercepted it, later interceptors won't be called.</p>
+<p>There are two type of Interceptors: <strong>appInterceptor</strong>, which will be called with <emph>origin request</emph>; and <strong>logInterceptor</strong>, which will be called with <emph>decorated request</emph>(i.e. after all <a href="-decorator.html">Decorator</a>s called)..</p>
+<p><strong>See Also</strong><br/>
+<p><a href="#">LogEngine.appInterceptors</a></p>
+<p><a href="#">LogEngine.logInterceptors</a></p>
+</p>
+</BODY>
+</HTML>

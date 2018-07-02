@@ -1,0 +1,64 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>LogRequest - </title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">org.mym.kotlog</a>&nbsp;/&nbsp;<a href=".">LogRequest</a><br/>
+<br/>
+<h1>LogRequest</h1>
+<code><span class="keyword">data</span> <span class="keyword">class </span><span class="identifier">LogRequest</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Any</span></code>
+<p>Log request entity definition.</p>
+<h3>Constructors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-init-.html">&lt;init&gt;</a></td>
+<td>
+<code><span class="identifier">LogRequest</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.LogRequest$<init>(kotlin.String, kotlin.String, kotlin.Int, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.LogRequest$<init>(kotlin.String, kotlin.String, kotlin.Int, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.LogRequest$<init>(kotlin.String, kotlin.String, kotlin.Int, kotlin.String)/level">level</span><span class="symbol">:</span>&nbsp;<span class="identifier">Int</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.LogRequest$<init>(kotlin.String, kotlin.String, kotlin.Int, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">)</span></code>
+<p>Log request entity definition.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Properties</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="group.html">group</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">group</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></code>
+<p>log group; usually this is a dimension to filter logs and not printed by default. If you wish them to appear in log, you can add a <a href="../-decorator.html">Decorator</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="level.html">level</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">level</span><span class="symbol">: </span><span class="identifier">Int</span><span class="symbol">?</span></code>
+<p>log level, must be one of <a href="#">Log.VERBOSE</a>,<a href="#">Log.DEBUG</a>, <a href="#">Log.INFO</a>, <a href="#">Log.WARN</a> and <a href="#">Log.ERROR</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="msg.html">msg</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">msg</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></code>
+<p>log content.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="tag.html">tag</a></td>
+<td>
+<code><span class="keyword">val </span><span class="identifier">tag</span><span class="symbol">: </span><span class="identifier">String</span><span class="symbol">?</span></code>
+<p>log tag to identify where does this log call. It is recommended to use auto tag.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

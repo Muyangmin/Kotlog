@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>L - </title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">org.mym.kotlog</a>&nbsp;/&nbsp;<a href=".">L</a><br/>
+<br/>
+<h1>L</h1>
+<code><span class="keyword">object </span><span class="identifier">L</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Any</span></code>
+<h3>Functions</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="add-application-interceptor.html">addApplicationInterceptor</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addApplicationInterceptor</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.mym.kotlog.L$addApplicationInterceptor(kotlin.Array((kotlin.Function1((org.mym.kotlog.LogRequest, kotlin.Boolean)))))/interceptor">interceptor</span><span class="symbol">:</span>&nbsp;<a href="../-interceptor.html"><span class="identifier">Interceptor</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Add application Interceptors into log engine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="add-decorator.html">addDecorator</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addDecorator</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.mym.kotlog.L$addDecorator(kotlin.Array((kotlin.Function1((org.mym.kotlog.LogRequest, )))))/decorator">decorator</span><span class="symbol">:</span>&nbsp;<a href="../-decorator.html"><span class="identifier">Decorator</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Add decorators into log engine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="add-log-interceptor.html">addLogInterceptor</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addLogInterceptor</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.mym.kotlog.L$addLogInterceptor(kotlin.Array((kotlin.Function1((org.mym.kotlog.LogRequest, kotlin.Boolean)))))/interceptor">interceptor</span><span class="symbol">:</span>&nbsp;<a href="../-interceptor.html"><span class="identifier">Interceptor</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Add log Interceptors into log engine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="add-printer.html">addPrinter</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">addPrinter</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.mym.kotlog.L$addPrinter(kotlin.Array((kotlin.Function1((org.mym.kotlog.LogRequest, kotlin.Unit)))))/printer">printer</span><span class="symbol">:</span>&nbsp;<a href="../-printer.html"><span class="identifier">Printer</span></a><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Add printer implementations into log engine.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="close-printers.html">closePrinters</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">closePrinters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Close printers if they are <a href="http://docs.oracle.com/javase/6/docs/api/java/io/Closeable.html">Closeable</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="d.html">d</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">d</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$d(kotlin.String, kotlin.String, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$d(kotlin.String, kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$d(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print log with level <a href="#">Log.DEBUG</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="e.html">e</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">e</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$e(kotlin.String, kotlin.String, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$e(kotlin.String, kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$e(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print log with level <a href="#">Log.ERROR</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="flush-printers.html">flushPrinters</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">flushPrinters</span><span class="symbol">(</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Flush printers if they are <a href="http://docs.oracle.com/javase/6/docs/api/java/io/Flushable.html">Flushable</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="i.html">i</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">i</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$i(kotlin.String, kotlin.String, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$i(kotlin.String, kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$i(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print log with level <a href="#">Log.INFO</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="install.html">install</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">install</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/autoTag">autoTag</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/needLineNumber">needLineNumber</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/needThreadInfo">needThreadInfo</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/enableDefaultPrinter">enableDefaultPrinter</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Install log engine to setup global settings. It is strongly recommended to call this method in Application.onCreate().</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="objects.html">objects</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">objects</span><span class="symbol">(</span><span class="keyword">vararg</span> <span class="identifier" id="org.mym.kotlog.L$objects(kotlin.Array((kotlin.Any)))/params">params</span><span class="symbol">:</span>&nbsp;<span class="identifier">Any</span><span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print multi objects one time, using <a href="#">Log.DEBUG</a> level.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="v.html">v</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">v</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$v(kotlin.String, kotlin.String, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$v(kotlin.String, kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$v(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print log with level <a href="#">Log.VERBOSE</a>.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="w.html">w</a></td>
+<td>
+<code><span class="keyword">fun </span><span class="identifier">w</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$w(kotlin.String, kotlin.String, kotlin.String)/msg">msg</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span><span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$w(kotlin.String, kotlin.String, kotlin.String)/tag">tag</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$w(kotlin.String, kotlin.String, kotlin.String)/group">group</span><span class="symbol">:</span>&nbsp;<span class="identifier">String</span><span class="symbol">?</span>&nbsp;<span class="symbol">=</span>&nbsp;null<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Print log with level <a href="#">Log.WARN</a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

@@ -1,7 +1,9 @@
-## Kotlog [![](https://jitpack.io/v/Muyangmin/Kotlog.svg)](https://jitpack.io/#Muyangmin/Kotlog)
+## Kotlog [![](https://jitpack.io/v/Muyangmin/Kotlog.svg)](https://jitpack.io/#Muyangmin/Kotlog) [![](https://img.shields.io/badge/Dokka-Full-brightgreen.svg)](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
 ### [中文文档](./README_zh.md)
 A log library specially designed for Kotlin scenarios in Android development. It's inspired by [Android-PLog](https://github.com/JumeiRdGroup/Android-PLog), but thanks to Kotlin, the api becomes more graceful and effective.
+
+#### [Full Dokka docs](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
 #### Guide
 ##### Step 1: Dependency

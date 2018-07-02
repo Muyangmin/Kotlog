@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>Decorator - </title>
+<link rel="stylesheet" href="..\style.css">
+</HEAD>
+<BODY>
+<a href="index.html">org.mym.kotlog</a>&nbsp;/&nbsp;<a href=".">Decorator</a><br/>
+<br/>
+<h1>Decorator</h1>
+<code><span class="keyword">typealias </span><span class="identifier">Decorator</span>&nbsp;<span class="symbol">=</span>&nbsp;<span class="symbol">(</span><a href="-log-request/index.html"><span class="identifier">LogRequest</span></a><span class="symbol">)</span>&nbsp;<span class="symbol">-&gt;</span>&nbsp;<a href="-log-request/index.html"><span class="identifier">LogRequest</span></a></code>
+<p>A Decorator can modify any field of a <a href="-log-request/index.html">LogRequest</a>, e.g. tag and msg.</p>
+<p>Multi decorators are allowed, but you should be aware of the sequence of adding them if they may change same field.</p>
+<p><strong>See Also</strong><br/>
+<p><a href="-auto-tag-decorator/index.html">AutoTagDecorator</a></p>
+<p><a href="-global-tag-decorator/index.html">GlobalTagDecorator</a></p>
+<p><a href="-line-number-decorator/index.html">LineNumberDecorator</a></p>
+<p><a href="-thread-info-decorator/index.html">ThreadInfoDecorator</a></p>
+</p>
+<h3>Inheritors</h3>
+<table>
+<tbody>
+<tr>
+<td>
+<a href="-auto-tag-decorator/index.html">AutoTagDecorator</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">AutoTagDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Decorator</span></code>
+<p>Detect and assign a best match log tag for each request.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-global-tag-decorator/index.html">GlobalTagDecorator</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">GlobalTagDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Decorator</span></code>
+<p>Concat a global tag for each single log.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-line-number-decorator/index.html">LineNumberDecorator</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">LineNumberDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Decorator</span></code>
+<p>Detect and insert line number information into the beginning of log content.</p>
+</td>
+</tr>
+<tr>
+<td>
+<a href="-thread-info-decorator/index.html">ThreadInfoDecorator</a></td>
+<td>
+<code><span class="keyword">class </span><span class="identifier">ThreadInfoDecorator</span>&nbsp;<span class="symbol">:</span>&nbsp;<span class="identifier">Decorator</span></code>
+<p>Detect and insert Thread information into the beginning of log content.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</BODY>
+</HTML>

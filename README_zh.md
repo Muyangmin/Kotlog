@@ -1,7 +1,9 @@
-## Kotlog [![](https://jitpack.io/v/Muyangmin/Kotlog.svg)](https://jitpack.io/#Muyangmin/Kotlog)
+## Kotlog [![](https://jitpack.io/v/Muyangmin/Kotlog.svg)](https://jitpack.io/#Muyangmin/Kotlog) [![](https://img.shields.io/badge/Dokka-Full-brightgreen.svg)](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
 ### [English version](./README.md)
 专为 Kotlin 环境下开发 Android 应用设计的日志库。得益于 Kotlin 的各种实用特性，API 可以相当优雅和简洁。
+
+#### [完整 Dokka 文档](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
 #### 使用指南
 ##### 第一步：添加依赖

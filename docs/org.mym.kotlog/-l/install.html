@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta charset="UTF-8">
+<title>L.install - </title>
+<link rel="stylesheet" href="..\..\style.css">
+</HEAD>
+<BODY>
+<a href="../index.html">org.mym.kotlog</a>&nbsp;/&nbsp;<a href="index.html">L</a>&nbsp;/&nbsp;<a href=".">install</a><br/>
+<br/>
+<h1>install</h1>
+<a name="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)"></a>
+<code><span class="keyword">fun </span><span class="identifier">install</span><span class="symbol">(</span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/autoTag">autoTag</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/needLineNumber">needLineNumber</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/needThreadInfo">needThreadInfo</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">, </span><span class="identifier" id="org.mym.kotlog.L$install(kotlin.Boolean, kotlin.Boolean, kotlin.Boolean, kotlin.Boolean)/enableDefaultPrinter">enableDefaultPrinter</span><span class="symbol">:</span>&nbsp;<span class="identifier">Boolean</span>&nbsp;<span class="symbol">=</span>&nbsp;true<span class="symbol">)</span><span class="symbol">: </span><span class="identifier">Unit</span></code>
+<p>Install log engine to setup global settings. It is strongly recommended to call this method in Application.onCreate().</p>
+<p>If you call any api without calling this method before, you will receive an <a href="http://docs.oracle.com/javase/6/docs/api/java/lang/IllegalStateException.html">IllegalStateException</a>.</p>
+<h3>Parameters</h3>
+
+<p><a name="autoTag"></a>
+<code>autoTag</code> - Whether to use auto tag, default is <code>true</code>.
+<p><a name="needLineNumber"></a>
+<code>needLineNumber</code> - Whether to print line number, default is <code>true</code>, and it is recommended.
+<p><a name="needThreadInfo"></a>
+<code>needThreadInfo</code> - Whether to print thread info, default is <code>true</code>.
+<p><a name="enableDefaultPrinter"></a>
+<code>enableDefaultPrinter</code> - Whether to enable default(logcat) printer, default is <code>true</code>.
+</BODY>
+</HTML>
