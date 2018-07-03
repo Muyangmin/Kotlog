@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         L.objects(123, "String", StubEntity())
 
+        uiLog("This is a log printed via a wrapper method")
+
         JavaUsage.sample()
     }
 }
