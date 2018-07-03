@@ -16,7 +16,7 @@
 package org.mym.kotlog
 
 /**
- * A Decorator can modify any field of a [LogRequest], e.g. tag and msg.
+ * A Decorator can modify any property of a [LogRequest], e.g. tag and msg.
  *
  * Multi decorators are allowed, but you should be aware of the sequence of adding them if they may change same field.
  *
@@ -34,8 +34,8 @@ typealias Decorator = (LogRequest) -> LogRequest
  *
  * There are two type of Interceptors: **appInterceptor**, which will be called with *origin request*; and **logInterceptor**, which will be called with *decorated request*(i.e. after all [Decorator]s called)..
  *
- * @see LogEngine.appInterceptors
- * @see LogEngine.logInterceptors
+ * @see [L.addApplicationInterceptor]
+ * @see [L.addLogInterceptor]
  */
 typealias Interceptor = (LogRequest) -> Boolean
 
@@ -46,7 +46,5 @@ typealias Interceptor = (LogRequest) -> Boolean
  * NOTE:
  * 1. Printers are allowed to have their own intercept logic.
  * 2. Printers are not required to be a `Flushable` or `Closable`, but if you implemented it, you can batch manage them via convenient method [L.flushPrinters] and [L.closePrinters].
- *
- * @see DebugPrinter
  */
 typealias Printer = (LogRequest) -> Unit

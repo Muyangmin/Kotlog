@@ -19,12 +19,12 @@ import android.util.Log
 import java.io.Closeable
 import java.io.Flushable
 
-@Suppress("unused", "MemberVisibilityCanBePrivate")
 /**
- * Print logs as you wish!
+ * **Core api class**, using this class to print logs as you wish!
  *
  * If you met problems please concat me via [GitHub](https://github.com/Muyangmin/Kotlog).
  */
+@Suppress("unused", "MemberVisibilityCanBePrivate")
 object L {
     internal lateinit var logEngine: LogEngine
 
@@ -91,6 +91,10 @@ object L {
 
     /**
      * Add printer implementations into log engine.
+     *
+     * Note: Add printer will **NOT** remove previous printers.
+     *
+     * @see Printer
      */
     fun addPrinter(vararg printer: Printer) = executeIfEngineInstalled {
         printer.forEach {
@@ -106,7 +110,7 @@ object L {
     }
 
     /**
-     * Print multi objects one time, using [Log.DEBUG] level.
+     * Print multi objects via a single call, using [Log.DEBUG] level.
      */
     @JvmStatic
     fun objects(vararg params: Any) = print(msg = params.foldIndexed("",
@@ -114,6 +118,8 @@ object L {
 
     /**
      * Print log with level [Log.VERBOSE].
+     *
+     * See [LogRequest] for param details.
      */
     @JvmStatic
     @JvmOverloads
@@ -123,6 +129,8 @@ object L {
 
     /**
      * Print log with level [Log.DEBUG].
+     *
+     * See [LogRequest] for param details.
      */
     @JvmStatic
     @JvmOverloads
@@ -132,6 +140,8 @@ object L {
 
     /**
      * Print log with level [Log.INFO].
+     *
+     * See [LogRequest] for param details.
      */
     @JvmStatic
     @JvmOverloads
@@ -141,6 +151,8 @@ object L {
 
     /**
      * Print log with level [Log.WARN].
+     *
+     * See [LogRequest] for param details.
      */
     @JvmStatic
     @JvmOverloads
@@ -150,6 +162,8 @@ object L {
 
     /**
      * Print log with level [Log.ERROR].
+     *
+     * See [LogRequest] for param details.
      */
     @JvmStatic
     @JvmOverloads

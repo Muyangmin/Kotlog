@@ -8,3 +8,4 @@
 .externalNativeBuild
 output.json
 *.apk
+*.jar

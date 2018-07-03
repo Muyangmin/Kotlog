@@ -20,10 +20,10 @@ import android.util.Log
 /**
  * Log request entity definition.
  *
- * @property[tag] log tag to identify where does this log call. It is recommended to use auto tag.
- * @property[msg] log content.
- * @property[level] log level, must be one of [Log.VERBOSE],[Log.DEBUG], [Log.INFO], [Log.WARN] and [Log.ERROR].
- * @property[group] log group; usually this is a dimension to filter logs and not printed by default. If you wish them to appear in log, you can add a [Decorator].
+ * @property[tag] Log tag to identify where does this log call. It is recommended to use auto tag.
+ * @property[msg] Log content.
+ * @property[level] Log level, must be one of [Log.VERBOSE],[Log.DEBUG], [Log.INFO], [Log.WARN] and [Log.ERROR].
+ * @property[group] Log group; usually this is a dimension to filter logs and not printed by default. If you wish them to appear in log, you can add a [Decorator].
  * @property[stackOffset] Log offset, usually combined with wrapper methods.
  */
 @Suppress("MemberVisibilityCanBePrivate")
