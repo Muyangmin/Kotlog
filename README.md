@@ -20,7 +20,7 @@ In your `app/build.gradle`:
 
 ```groovy
 	dependencies {
-		implementation 'com.github.Muyangmin:Kotlog:1.0.0'
+		implementation 'com.github.Muyangmin:Kotlog:1.1.0'
 	}
 ```
 ##### Step 1: Initializing
