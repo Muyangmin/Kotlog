@@ -39,10 +39,17 @@ class LogEngine {
             return field
         }
 
+    private var currentRequest: LogRequest? = null
+
     /**
      * Core data flow method.
      */
     internal fun proceed(request: LogRequest) {
+        //Pre-condition check
+        if (request.stackOffset < 0) {
+            throw IllegalArgumentException("StackOffset must be positive!")
+        }
+
         //Use a run block to extract common actions before or after core flow, e.g. clean up.
         run coreFlow@ {
             if (appInterceptors.any {
@@ -50,6 +57,8 @@ class LogEngine {
                     }) {
                 return@coreFlow
             }
+
+            currentRequest = request
 
             //chained decoration
             val finalRequest = decorators.fold(request, { thisRequest, decorator ->
@@ -74,12 +83,14 @@ class LogEngine {
     private fun clean() {
         threadInfo = null
         traceInfo = null
+        currentRequest = null
     }
 
     private fun resolveTraceInfo(): StackTraceElement? {
         val stack = threadInfo?.stackTrace ?: return null
 
         var hasEnterLibrary = false
+        var explicitOffset = currentRequest?.stackOffset ?: 0
         stack.forEach { element ->
             if (isClassInKotlogPackage(element.className)) {
                 if (!hasEnterLibrary) {
@@ -87,11 +98,16 @@ class LogEngine {
                 }
                 return@forEach
             }
-            //Leave library, and we found it!
+            //Has left library, check for offset
             else if (hasEnterLibrary) {
+                if (explicitOffset > 0) {
+                    explicitOffset--
+                    return@forEach
+                }
                 return element
             }
         }
+        //Fallback for unknown cases
         return stack[stack.lastIndex]
     }
 

@@ -117,8 +117,8 @@ object L {
      */
     @JvmStatic
     @JvmOverloads
-    fun v(msg: String?, tag: String? = null, group: String? = null) =
-            print(tag = tag, msg = msg, level = Log.VERBOSE, group = group)
+    fun v(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
+            print(tag = tag, msg = msg, level = Log.VERBOSE, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -126,8 +126,8 @@ object L {
      */
     @JvmStatic
     @JvmOverloads
-    fun d(msg: String?, tag: String? = null, group: String? = null) =
-            print(tag = tag, msg = msg, level = Log.DEBUG, group = group)
+    fun d(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
+            print(tag = tag, msg = msg, level = Log.DEBUG, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -135,8 +135,8 @@ object L {
      */
     @JvmStatic
     @JvmOverloads
-    fun i(msg: String?, tag: String? = null, group: String? = null) =
-            print(tag = tag, msg = msg, level = Log.INFO, group = group)
+    fun i(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
+            print(tag = tag, msg = msg, level = Log.INFO, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -144,8 +144,8 @@ object L {
      */
     @JvmStatic
     @JvmOverloads
-    fun w(msg: String?, tag: String? = null, group: String? = null) =
-            print(tag = tag, msg = msg, level = Log.WARN, group = group)
+    fun w(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
+            print(tag = tag, msg = msg, level = Log.WARN, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -153,12 +153,12 @@ object L {
      */
     @JvmStatic
     @JvmOverloads
-    fun e(msg: String?, tag: String? = null, group: String? = null) =
-            print(tag = tag, msg = msg, level = Log.ERROR, group = group)
+    fun e(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
+            print(tag = tag, msg = msg, level = Log.ERROR, group = group, stackOffset = stackOffset)
 
-    private fun print(tag: String? = null, msg: String?, level: Int = Log.DEBUG, group: String? = null) {
+    private fun print(tag: String? = null, msg: String?, level: Int = Log.DEBUG, group: String? = null, stackOffset: Int = 0) {
         executeIfEngineInstalled {
-            val request = LogRequest(tag, msg, level, group)
+            val request = LogRequest(tag, msg, level, group, stackOffset)
             logEngine.proceed(request)
         }
     }

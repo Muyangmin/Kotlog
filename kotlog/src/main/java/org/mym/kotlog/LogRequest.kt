@@ -24,6 +24,7 @@ import android.util.Log
  * @property[msg] log content.
  * @property[level] log level, must be one of [Log.VERBOSE],[Log.DEBUG], [Log.INFO], [Log.WARN] and [Log.ERROR].
  * @property[group] log group; usually this is a dimension to filter logs and not printed by default. If you wish them to appear in log, you can add a [Decorator].
+ * @property[stackOffset] Log offset, usually combined with wrapper methods.
  */
 @Suppress("MemberVisibilityCanBePrivate")
-data class LogRequest(val tag: String?, val msg: String?, val level: Int?, val group: String?)
+data class LogRequest(val tag: String?, val msg: String?, val level: Int?, val group: String?, val stackOffset: Int = 0)
