@@ -33,28 +33,20 @@ object L {
      *
      * If you call any api without calling this method before, you will receive an [IllegalStateException].
      *
-     * @param[autoTag] Whether to use auto tag, default is `true`.
-     * @param[printGroupAsTag] Whether to print group in tag . If set to `false`, group param will just transparently be passed to interceptors.
-     * @param[needLineNumber] Whether to print line number, default is `true`, and it is recommended.
-     * @param[needThreadInfo] Whether to print thread info, default is `true`.
+     * @param[enableDefaultDecorators] Whether to enable default decorators, default is `true`. Strongly recommend to set `true` to keep consistence for future compatibility.
      * @param[enableDefaultPrinter] Whether to enable default(logcat) printer, default is `true`.
      */
-    fun install(
-        autoTag: Boolean = true,
-        printGroupAsTag: Boolean = true,
-        needLineNumber: Boolean = true,
-        needThreadInfo: Boolean = true, enableDefaultPrinter: Boolean = true
-    ) {
+    fun install(enableDefaultDecorators: Boolean = true, enableDefaultPrinter: Boolean = true) {
         logEngine = LogEngine()
 
-        val decorators = mutableListOf(
-            if (autoTag) AutoTagDecorator() else null,
-            if (printGroupAsTag) GroupTagDecorator() else null,
-            if (needLineNumber) LineNumberDecorator() else null,
-            if (needThreadInfo) ThreadInfoDecorator() else null
-        ).filterNotNull()
+        if (enableDefaultDecorators) {
+            val decorators = mutableListOf(
+                AutoTagDecorator(), GroupTagDecorator(),
+                LineNumberDecorator(), ThreadInfoDecorator()
+            )
+            addDecorators(decorators)
+        }
 
-        addDecorators(decorators)
         if (enableDefaultPrinter) {
             addPrinter(DebugPrinter())
         }
