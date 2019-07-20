@@ -62,7 +62,7 @@ class LogEngine {
 
             //chained decoration
             val finalRequest = decorators.fold(request, { thisRequest, decorator ->
-                decorator.invoke(thisRequest)
+                decorator.decorate(thisRequest)
             })
 
             if (logInterceptors.any { it.invoke(finalRequest) }) {

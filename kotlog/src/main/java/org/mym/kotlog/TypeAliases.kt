@@ -16,18 +16,6 @@
 package org.mym.kotlog
 
 /**
- * A Decorator can modify any property of a [LogRequest], e.g. tag and msg.
- *
- * Multi decorators are allowed, but you should be aware of the sequence of adding them if they may change same field.
- *
- * @see AutoTagDecorator
- * @see GlobalTagDecorator
- * @see LineNumberDecorator
- * @see ThreadInfoDecorator
- */
-typealias Decorator = (LogRequest) -> LogRequest
-
-/**
  * An Interceptor can decide whether this log can be printed.
  *
  * Multi interceptors are allowed. For each log request, if previous interceptor has intercepted it, later interceptors won't be called.

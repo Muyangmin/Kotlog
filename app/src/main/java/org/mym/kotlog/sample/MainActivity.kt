@@ -1,7 +1,7 @@
 package org.mym.kotlog.sample
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import org.mym.kotlog.L
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         L.objects(123, "String", StubEntity())
 
-        uiLog("This is a log printed via a wrapper method")
+        L.uiLog("This is a log printed via a wrapper method")
 
         JavaUsage.sample()
     }

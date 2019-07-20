@@ -13,9 +13,9 @@ class SampleApp : Application() {
             install()
             addApplicationInterceptor({ !BuildConfig.DEBUG })
             addDecorator(GlobalTagDecorator("SampleApp"))
-            L.addPrinter(object :Printer {
+            addPrinter(object :Printer {
                 override fun invoke(p1: LogRequest) {
-                    System.out.println("New Printer are writing to file...")
+                    println("New Printer are writing to file...")
                 }
             })
         }

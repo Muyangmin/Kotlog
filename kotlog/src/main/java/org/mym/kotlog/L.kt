@@ -34,25 +34,27 @@ object L {
      * If you call any api without calling this method before, you will receive an [IllegalStateException].
      *
      * @param[autoTag] Whether to use auto tag, default is `true`.
+     * @param[printGroupAsTag] Whether to print group in tag . If set to `false`, group param will just transparently be passed to interceptors.
      * @param[needLineNumber] Whether to print line number, default is `true`, and it is recommended.
      * @param[needThreadInfo] Whether to print thread info, default is `true`.
      * @param[enableDefaultPrinter] Whether to enable default(logcat) printer, default is `true`.
      */
-    fun install(autoTag: Boolean = true, needLineNumber: Boolean = true,
-                needThreadInfo: Boolean = true, enableDefaultPrinter: Boolean = true) {
+    fun install(
+        autoTag: Boolean = true,
+        printGroupAsTag: Boolean = true,
+        needLineNumber: Boolean = true,
+        needThreadInfo: Boolean = true, enableDefaultPrinter: Boolean = true
+    ) {
         logEngine = LogEngine()
 
-        if (autoTag) {
-            addDecorator(AutoTagDecorator())
-        }
+        val decorators = mutableListOf(
+            if (autoTag) AutoTagDecorator() else null,
+            if (printGroupAsTag) GroupTagDecorator() else null,
+            if (needLineNumber) LineNumberDecorator() else null,
+            if (needThreadInfo) ThreadInfoDecorator() else null
+        ).filterNotNull()
 
-        if (needLineNumber) {
-            addDecorator(LineNumberDecorator())
-        }
-
-        if (needThreadInfo) {
-            addDecorator(ThreadInfoDecorator())
-        }
+        addDecorators(decorators)
         if (enableDefaultPrinter) {
             addPrinter(DebugPrinter())
         }
@@ -83,9 +85,20 @@ object L {
      * Add decorators into log engine.
      * @see Decorator
      */
-    fun addDecorator(vararg decorator: Decorator) = executeIfEngineInstalled {
-        decorator.forEach {
-            logEngine.decorators.add(it)
+    fun addDecorator(decorator: Decorator) = executeIfEngineInstalled {
+        logEngine.decorators.apply {
+            add(decorator)
+            sortBy { it.order }
+        }
+    }
+
+    /**
+     * Add all decorators into log engine.
+     */
+    fun addDecorators(decorators: Collection<Decorator>) = executeIfEngineInstalled {
+        logEngine.decorators.apply {
+            addAll(decorators)
+            sortedBy { it.order }
         }
     }
 
@@ -113,8 +126,10 @@ object L {
      * Print multi objects via a single call, using [Log.DEBUG] level.
      */
     @JvmStatic
-    fun objects(vararg params: Any) = print(msg = params.foldIndexed("",
-            { index, str, param -> "$str\nparam[$index]=$param" }))
+    fun objects(vararg params: Any) = print(
+        msg = params.foldIndexed("",
+            { index, str, param -> "$str\nparam[$index]=$param" })
+    )
 
     /**
      * Print log with level [Log.VERBOSE].
@@ -124,7 +139,7 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun v(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-            print(tag = tag, msg = msg, level = Log.VERBOSE, group = group, stackOffset = stackOffset)
+        print(tag = tag, msg = msg, level = Log.VERBOSE, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -135,7 +150,7 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun d(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-            print(tag = tag, msg = msg, level = Log.DEBUG, group = group, stackOffset = stackOffset)
+        print(tag = tag, msg = msg, level = Log.DEBUG, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -146,7 +161,7 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun i(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-            print(tag = tag, msg = msg, level = Log.INFO, group = group, stackOffset = stackOffset)
+        print(tag = tag, msg = msg, level = Log.INFO, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -157,7 +172,7 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun w(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-            print(tag = tag, msg = msg, level = Log.WARN, group = group, stackOffset = stackOffset)
+        print(tag = tag, msg = msg, level = Log.WARN, group = group, stackOffset = stackOffset)
 
 
     /**
@@ -168,9 +183,15 @@ object L {
     @JvmStatic
     @JvmOverloads
     fun e(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-            print(tag = tag, msg = msg, level = Log.ERROR, group = group, stackOffset = stackOffset)
+        print(tag = tag, msg = msg, level = Log.ERROR, group = group, stackOffset = stackOffset)
 
-    private fun print(tag: String? = null, msg: String?, level: Int = Log.DEBUG, group: String? = null, stackOffset: Int = 0) {
+    private fun print(
+        tag: String? = null,
+        msg: String?,
+        level: Int = Log.DEBUG,
+        group: String? = null,
+        stackOffset: Int = 0
+    ) {
         executeIfEngineInstalled {
             val request = LogRequest(tag, msg, level, group, stackOffset)
             logEngine.proceed(request)
