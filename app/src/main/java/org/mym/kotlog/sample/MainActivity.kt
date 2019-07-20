@@ -18,10 +18,8 @@ class MainActivity : AppCompatActivity() {
 
         L.d("A complicated log in ${MainActivity::class.simpleName} a")
 
-        L.objects(123, "String", StubEntity())
+        L.objects(123, "String", null, StubEntity())
 
         L.uiLog("This is a log printed via a wrapper method")
-
-        JavaUsage.sample()
     }
 }

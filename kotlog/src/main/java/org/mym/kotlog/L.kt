@@ -117,75 +117,68 @@ object L {
     /**
      * Print multi objects via a single call, using [Log.DEBUG] level.
      */
-    @JvmStatic
-    fun objects(vararg params: Any) = print(
+    fun objects(vararg params: Any?) = d(
         msg = params.foldIndexed("",
             { index, str, param -> "$str\nparam[$index]=$param" })
     )
 
     /**
-     * Print log with level [Log.VERBOSE].
+     * Print log with level [Log.VERBOSE], [extraOptions] can be used to specify extra options.
      *
      * See [LogRequest] for param details.
      */
-    @JvmStatic
-    @JvmOverloads
-    fun v(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-        print(tag = tag, msg = msg, level = Log.VERBOSE, group = group, stackOffset = stackOffset)
-
+    fun v(msg: String?, extraOptions: (LogRequestBuilder.() -> Unit)? = null) {
+        val req = LogRequestBuilder(msg = msg, level = Log.VERBOSE)
+        extraOptions?.invoke(req)
+        printLogRequest(req.build())
+    }
 
     /**
-     * Print log with level [Log.DEBUG].
+     * Print log with level [Log.DEBUG], [extraOptions] can be used to specify extra options.
      *
      * See [LogRequest] for param details.
      */
-    @JvmStatic
-    @JvmOverloads
-    fun d(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-        print(tag = tag, msg = msg, level = Log.DEBUG, group = group, stackOffset = stackOffset)
-
+    fun d(msg: String?, extraOptions: (LogRequestBuilder.() -> Unit)? = null) {
+        val req = LogRequestBuilder(msg = msg, level = Log.DEBUG)
+        extraOptions?.invoke(req)
+        printLogRequest(req.build())
+    }
 
     /**
-     * Print log with level [Log.INFO].
+     * Print log with level [Log.INFO], [extraOptions] can be used to specify extra options.
      *
      * See [LogRequest] for param details.
      */
-    @JvmStatic
-    @JvmOverloads
-    fun i(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-        print(tag = tag, msg = msg, level = Log.INFO, group = group, stackOffset = stackOffset)
-
+    fun i(msg: String?, extraOptions: (LogRequestBuilder.() -> Unit)? = null) {
+        val req = LogRequestBuilder(msg = msg, level = Log.INFO)
+        extraOptions?.invoke(req)
+        printLogRequest(req.build())
+    }
 
     /**
-     * Print log with level [Log.WARN].
+     * Print log with level [Log.WARN], [extraOptions] can be used to specify extra options.
      *
      * See [LogRequest] for param details.
      */
-    @JvmStatic
-    @JvmOverloads
-    fun w(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-        print(tag = tag, msg = msg, level = Log.WARN, group = group, stackOffset = stackOffset)
-
+    fun w(msg: String?, extraOptions: (LogRequestBuilder.() -> Unit)? = null) {
+        val req = LogRequestBuilder(msg = msg, level = Log.WARN)
+        extraOptions?.invoke(req)
+        printLogRequest(req.build())
+    }
 
     /**
-     * Print log with level [Log.ERROR].
+     * Print log with level [Log.ERROR], [extraOptions] can be used to specify extra options.
      *
      * See [LogRequest] for param details.
      */
-    @JvmStatic
-    @JvmOverloads
-    fun e(msg: String?, tag: String? = null, group: String? = null, stackOffset: Int = 0) =
-        print(tag = tag, msg = msg, level = Log.ERROR, group = group, stackOffset = stackOffset)
+    fun e(msg: String?, extraOptions: (LogRequestBuilder.() -> Unit)? = null) {
+        val req = LogRequestBuilder(msg = msg, level = Log.ERROR)
+        extraOptions?.invoke(req)
+        printLogRequest(req.build())
+    }
 
-    private fun print(
-        tag: String? = null,
-        msg: String?,
-        level: Int = Log.DEBUG,
-        group: String? = null,
-        stackOffset: Int = 0
-    ) {
+    private fun printLogRequest(request: LogRequest) {
         executeIfEngineInstalled {
-            val request = LogRequest(tag, msg, level, group, stackOffset)
             logEngine.proceed(request)
         }
     }
@@ -195,7 +188,6 @@ object L {
      *
      * NOTE: This method is only for convenience; it is not mandatory to be flushable.
      */
-    @JvmStatic
     fun flushPrinters() {
         executeIfEngineInstalled {
             logEngine.printers.forEach { (it as? Flushable)?.flush() }
@@ -207,7 +199,6 @@ object L {
      *
      * NOTE: This method is only for convenience; it is not mandatory to be flushable.
      */
-    @JvmStatic
     fun closePrinters() {
         executeIfEngineInstalled {
             logEngine.printers.forEach { (it as? Closeable)?.close() }

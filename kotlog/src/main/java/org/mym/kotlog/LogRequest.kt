@@ -27,3 +27,18 @@ import android.util.Log
  * @property[stackOffset] Log offset, usually combined with wrapper methods.
  */
 data class LogRequest(val tag: String?, val msg: String?, val level: Int?, val group: String?, val stackOffset: Int = 0)
+
+/**
+ * An extra builder class to provide editing feature for designed read-only [LogRequest]s.
+ */
+class LogRequestBuilder(
+    var tag: String? = null,
+    var msg: String? = null,
+    var level: Int? = Log.DEBUG,
+    var group: String? = null,
+    var stackOffset: Int = 0
+) {
+    fun build(): LogRequest {
+        return LogRequest(tag, msg, level, group, stackOffset)
+    }
+}
