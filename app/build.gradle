@@ -3,29 +3,26 @@ apply plugin: 'com.android.application'
 apply from: "../common-config.gradle"
 
 android {
-    compileSdkVersion 28
     defaultConfig {
-        applicationId "org.mym.kotlog.sample"
-        minSdkVersion 15
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        applicationId "org.mym.kotlog.example"
     }
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }
 
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${KOTLIN_VERSION}"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:${KOTLIN_VERSION}"
-    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation deps.kotlinLib
+    implementation deps.kotlinReflect
+    implementation deps.appCompat
+    implementation deps.coreKtx
+    implementation deps.constraintLayout
     implementation project(':kotlog')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

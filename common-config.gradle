@@ -1,13 +1,33 @@
-def isAndroidModule() {
-    return project.plugins.hasPlugin("com.android.application") || project.plugins.hasPlugin("com.android.library")
-}
+logger.debug("--------------> Injecting dependencies")
+if (project.plugins.hasPlugin("com.android.application")
+        || project.plugins.hasPlugin("com.android.library")) {
 
-if (isAndroidModule()) {
     apply plugin: "kotlin-android"
     apply plugin: "kotlin-android-extensions"
     apply plugin: 'kotlin-kapt'
+    apply plugin: 'org.jetbrains.dokka'
+    apply from: '../dependencies.gradle'
+
+    dokka {
+        outputFormat = 'html'
+        outputDirectory = "$buildDir/javadoc"
+    }
 
     android {
+        compileSdkVersion versionConfig.compileSdkVersion
+
+        defaultConfig {
+            minSdkVersion versionConfig.minSdkversion
+            targetSdkVersion versionConfig.targetSdkVersion
+            versionCode versionConfig.libraryVersionCode
+            versionName versionConfig.libraryVersionName
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        androidExtensions {
+            experimental = true
+        }
+
         lintOptions {
             abortOnError false
         }
@@ -17,4 +37,25 @@ if (isAndroidModule()) {
             targetCompatibility JavaVersion.VERSION_1_8
         }
     }
+
+    dependencies {
+        implementation deps.kotlinLib
+
+        testImplementation testDeps.junit
+        androidTestImplementation testDeps.runner
+        androidTestImplementation testDeps.espresso
+    }
+
+    if (project.plugins.hasPlugin("com.android.library")) {
+        apply plugin: 'com.novoda.bintray-release'
+        publish {
+            userOrg = "muyangmin"
+            repoName = 'org.mym'
+            groupId = 'org.mym.kotlog'
+            publishVersion = versionConfig.libraryVersionName
+            desc = 'A log library specially designed for Kotlin scenarios in Android development.'
+            website = 'https://github.com/Muyangmin/Kotlog'
+        }
+    }
 }
+logger.debug("--------------> Injected dependencies.")
