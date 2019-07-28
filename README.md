@@ -15,7 +15,7 @@ A log library specially designed for Kotlin scenarios in Android development. It
 ##### Using [jitPack](https://jitpack.io)
 ```groovy
 	dependencies {
-		implementation 'com.github.Muyangmin:Kotlog:1.1.0'
+		implementation 'com.github.Muyangmin:Kotlog:$latest_version'
 	}
 ```
 
