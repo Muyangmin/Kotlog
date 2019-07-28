@@ -1,39 +1,45 @@
 ## Kotlog [![](https://jitpack.io/v/Muyangmin/Kotlog.svg)](https://jitpack.io/#Muyangmin/Kotlog) [![](https://img.shields.io/badge/Dokka-Full-brightgreen.svg)](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
-### [中文文档](./README_zh.md)
-A log library specially designed for Kotlin scenarios in Android development. It's inspired by [Android-PLog](https://github.com/JumeiRdGroup/Android-PLog), but thanks to Kotlin, the api becomes more graceful and effective.
+A log library specially designed for Kotlin scenarios in Android development. It's inspired by [Android-PLog](https://github.com/JumeiRdGroup/Android-PLog).
 
 #### [Full Dokka docs](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
-#### Guide
-##### Step 1: Dependency
-In your root `build.gradle`:
+#### Dependency
+##### Using jcenter
 ```groovy
-	allprojects {
-		repositories {
-			maven { url 'https://jitpack.io' }
-		}
+	dependencies {
+		implementation 'org.mym.kotlog:kotlog:$latest_version'
 	}
 ```
 
-In your `app/build.gradle`:
-
+##### Using [jitPack](https://jitpack.io)
 ```groovy
 	dependencies {
 		implementation 'com.github.Muyangmin:Kotlog:1.1.0'
 	}
 ```
-##### Step 1: Initializing
+
+#### Usage
+##### Initializing
 In you Application#onCreate():
 ```
     L.install();
 ```
-It is strongly recommended to add extra options all you need here, though you can add them at any time.
+If you forget to call `install()` method, you will receive an Exception at runtime.
 ##### Hello World
 ```kotlin
 L.v("Hello World!")
 ```
 #### Advanced
+##### Extend L class api
+For example to simplify group usage:
+```kotlin
+fun L.logLifecycle(msg: String?) = d(msg) {
+    group = "Lifecycle"
+    stackOffset = 1
+}
+```
+
 ##### Add Interceptor
 There are 2 types of interceptors: appInterceptor and logInterceptor. Both of them are `Interceptor` interface, but usage is different: appInterceptor only proceed origin log request, while logInterceptor only proceed decorated(e.g. added log tag, or line number) log request.
 ```kotlin
