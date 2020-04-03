@@ -92,7 +92,7 @@ object L {
     fun addDecorators(decorators: Collection<Decorator>) = executeIfEngineInstalled {
         logEngine.decorators.apply {
             addAll(decorators)
-            sortedBy { it.order }
+            sortBy { it.order }
         }
     }
 
