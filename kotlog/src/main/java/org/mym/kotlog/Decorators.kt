@@ -42,6 +42,11 @@ interface Decorator {
     }
 
     /**
+     * Whether the param request should be decorated by this decorator.
+     */
+    fun shouldDecorate(request: LogRequest): Boolean = true
+
+    /**
      * Decorate request and return new one.
      */
     fun decorate(request: LogRequest): LogRequest
@@ -55,7 +60,7 @@ interface Decorator {
 /**
  * Concat a global tag for each single log.
  */
-class GlobalTagDecorator(
+open class GlobalTagDecorator(
     private val globalTag: String = "GlobalTag",
     private val concat: String = "-",
     override val order: Int = ORDER_GLOBAL_TAG
@@ -66,7 +71,7 @@ class GlobalTagDecorator(
     }
 }
 
-class GroupTagDecorator(override val order: Int = ORDER_GROUP_TAG) : Decorator {
+open class GroupTagDecorator(override val order: Int = ORDER_GROUP_TAG) : Decorator {
     override fun decorate(request: LogRequest): LogRequest {
         return if (request.group.isNullOrEmpty()) {
             request
@@ -79,7 +84,7 @@ class GroupTagDecorator(override val order: Int = ORDER_GROUP_TAG) : Decorator {
 /**
  * Detect and assign a best match log tag for each request.
  */
-class AutoTagDecorator(override val order: Int = ORDER_AUTO_TAG) : Decorator {
+open class AutoTagDecorator(override val order: Int = ORDER_AUTO_TAG) : Decorator {
     override fun decorate(request: LogRequest): LogRequest {
         val trace = L.logEngine.traceInfo
         return when {
@@ -102,7 +107,7 @@ class AutoTagDecorator(override val order: Int = ORDER_AUTO_TAG) : Decorator {
 /**
  * Detect and insert line number information into the beginning of log content.
  */
-class LineNumberDecorator(override val order: Int = ORDER_LINE_NUMBER) : Decorator {
+open class LineNumberDecorator(override val order: Int = ORDER_LINE_NUMBER) : Decorator {
     override fun decorate(request: LogRequest): LogRequest {
         val trace = L.logEngine.traceInfo
         return if (trace != null) {
@@ -119,7 +124,7 @@ class LineNumberDecorator(override val order: Int = ORDER_LINE_NUMBER) : Decorat
 /**
  * Detect and insert Thread information into the beginning of log content.
  */
-class ThreadInfoDecorator(override val order: Int = ORDER_THREAD_INFO) : Decorator {
+open class ThreadInfoDecorator(override val order: Int = ORDER_THREAD_INFO) : Decorator {
     override fun decorate(request: LogRequest): LogRequest {
         val thread = L.logEngine.threadInfo
         return if (thread != null) {

@@ -51,10 +51,10 @@ class LogEngine {
         }
 
         //Use a run block to extract common actions before or after core flow, e.g. clean up.
-        run coreFlow@ {
+        run coreFlow@{
             if (appInterceptors.any {
-                        it.invoke(request)
-                    }) {
+                    it.invoke(request)
+                }) {
                 return@coreFlow
             }
 
@@ -62,7 +62,11 @@ class LogEngine {
 
             //chained decoration
             val finalRequest = decorators.fold(request, { thisRequest, decorator ->
-                decorator.decorate(thisRequest)
+                if (decorator.shouldDecorate(thisRequest)) {
+                    decorator.decorate(thisRequest)
+                } else {
+                    thisRequest
+                }
             })
 
             if (logInterceptors.any { it.invoke(finalRequest) }) {
