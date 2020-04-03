@@ -2,6 +2,8 @@
 
 A log library specially designed for Kotlin scenarios in Android development. It's inspired by [Android-PLog](https://github.com/JumeiRdGroup/Android-PLog).
 
+This library does not care persistence or encryption; other libraries does this and you can combine usage with them.
+
 #### [Full Dokka docs](https://muyangmin.github.io/Kotlog/org.mym.kotlog/index.html)
 
 #### Dependency
