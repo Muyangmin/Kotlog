@@ -77,9 +77,9 @@ object L {
      * Add decorators into log engine.
      * @see Decorator
      */
-    fun addDecorator(decorator: Decorator) = executeIfEngineInstalled {
+    fun addDecorator(vararg decorator: Decorator) = executeIfEngineInstalled {
         logEngine.decorators.apply {
-            add(decorator)
+            addAll(decorator)
             sortBy { it.order }
         }
     }
