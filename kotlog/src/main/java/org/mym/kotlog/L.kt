@@ -40,11 +40,13 @@ object L {
         logEngine = LogEngine()
 
         if (enableDefaultDecorators) {
-            val decorators = mutableListOf(
-                AutoTagDecorator(), GroupTagDecorator(),
-                LineNumberDecorator(), ThreadInfoDecorator()
+            addDecorator(
+                //param order is arbitrary; they will be sorted internally by their `order` property.
+                AutoTagDecorator(),
+                GroupTagDecorator(),
+                LineNumberDecorator(),
+                ThreadInfoDecorator()
             )
-            addDecorators(decorators)
         }
 
         if (enableDefaultPrinter) {
